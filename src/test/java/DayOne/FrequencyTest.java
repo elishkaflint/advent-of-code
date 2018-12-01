@@ -1,3 +1,5 @@
+package DayOne;
+
 import org.junit.jupiter.api.Test;
 import java.util.logging.Logger;
 
