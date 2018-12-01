@@ -2,10 +2,23 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FrequencyCalculator {
+public class Frequency {
 
-    public static void main(String[] args) throws Exception {
+    public static int calculateSum() throws Exception {
 
+        List<Integer> frequencies = csvToArrayList();
+
+        int sum = 0;
+
+        for (int i = 0; i < frequencies.size(); i++) {
+            sum += frequencies.get(i);
+        }
+
+        return sum;
+
+    }
+
+    private static List<Integer> csvToArrayList() throws IOException {
         List<Integer> frequencies = new ArrayList<Integer>();
 
         String fileIn = "frequency-inputs.csv";
@@ -20,14 +33,7 @@ public class FrequencyCalculator {
 
         bufferedReader.close();
 
-        int sum = 0;
-
-        for (int i = 0; i < frequencies.size(); i++) {
-            sum += frequencies.get(i);
-        }
-
-        System.out.println(sum);
-
+        return frequencies;
     }
 
 }
