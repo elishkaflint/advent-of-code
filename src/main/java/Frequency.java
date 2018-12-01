@@ -5,9 +5,6 @@ import java.util.logging.Logger;
 
 public class Frequency {
 
-    private final static Logger LOG = Logger.getLogger(Frequency.class.getName());
-
-
     public static int calculateSum() throws Exception {
 
         List<Integer> frequencies = csvToArrayList();
