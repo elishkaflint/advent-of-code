@@ -1,8 +1,12 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Frequency {
+
+    private final static Logger LOG = Logger.getLogger(Frequency.class.getName());
+
 
     public static int calculateSum() throws Exception {
 
@@ -16,6 +20,34 @@ public class Frequency {
 
         return sum;
 
+    }
+
+    public static int calculateDoubles() throws Exception {
+
+        List<Integer> frequencies = csvToArrayList();
+        List<Integer> uniqueFrequencies = new ArrayList<>();
+
+        int currentFrequency = frequencies.get(0);
+        uniqueFrequencies.add(currentFrequency);
+
+        rotate(frequencies);
+
+        while (true) {
+
+            currentFrequency += frequencies.get(0);
+
+            if (!uniqueFrequencies.contains(currentFrequency)) {
+                uniqueFrequencies.add(currentFrequency);
+                rotate(frequencies);
+            } else {
+                return currentFrequency;
+            }
+        }
+    }
+
+    private static void rotate(List<Integer> frequencies) {
+        frequencies.add(frequencies.get(0));
+        frequencies.remove(frequencies.get(0));
     }
 
     private static List<Integer> csvToArrayList() throws IOException {

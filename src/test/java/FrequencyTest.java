@@ -15,4 +15,12 @@ class FrequencyTest {
         assertNotNull(calc);
     }
 
+    @Test
+    public void calculateDoublesTest() throws Exception {
+        Frequency frequency = new Frequency();
+        int calc = frequency.calculateDoubles();
+        LOG.info( "First double: " + calc );
+        assertNotNull(calc);
+    }
+
 }
