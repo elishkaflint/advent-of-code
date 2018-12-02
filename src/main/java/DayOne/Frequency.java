@@ -7,7 +7,13 @@ import java.util.logging.Logger;
 
 public class Frequency {
 
-    public static int calculateSum() throws Exception {
+    String file;
+
+    public Frequency(String file) {
+        this.file = file;
+    }
+
+    public int calculateSum() throws Exception {
 
         List<Integer> frequencies = csvToArrayList();
 
@@ -21,7 +27,7 @@ public class Frequency {
 
     }
 
-    public static int calculateDoubles() throws Exception {
+    public int calculateDoubles() throws Exception {
 
         List<Integer> frequencies = csvToArrayList();
         List<Integer> uniqueFrequencies = new ArrayList<>();
@@ -49,10 +55,10 @@ public class Frequency {
         frequencies.remove(frequencies.get(0));
     }
 
-    private static List<Integer> csvToArrayList() throws IOException {
+    private List<Integer> csvToArrayList() throws IOException {
         List<Integer> frequencies = new ArrayList<Integer>();
 
-        String fileIn = "frequency-inputs.csv";
+        String fileIn = this.file;
         String line = null;
 
         FileReader fileReader = new FileReader(fileIn);
@@ -65,6 +71,14 @@ public class Frequency {
         bufferedReader.close();
 
         return frequencies;
+    }
+
+    public static void main (String[] args) throws Exception {
+        Frequency frequency = new Frequency("frequency-inputs.csv");
+        System.out.println("Calculating current frequency...");
+        System.out.println("Current frequency: " + frequency.calculateSum());
+        System.out.println("Calculating first repeated frequency...");
+        System.out.println("First repeated frequency: " + frequency.calculateDoubles());
     }
 
 }

@@ -7,22 +7,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FrequencyTest {
 
-    private final static Logger LOG = Logger.getLogger(FrequencyTest.class.getName());
-
     @Test
     public void calculateSumTest() throws Exception {
-        Frequency frequency = new Frequency();
+        Frequency frequency = new Frequency("part1test.csv");
         int calc = frequency.calculateSum();
-        LOG.info( "Total sum: " + calc );
-        assertNotNull(calc);
+        assertEquals(3, calc);
     }
 
     @Test
     public void calculateDoublesTest() throws Exception {
-        Frequency frequency = new Frequency();
+        Frequency frequency = new Frequency("part2test.csv");
         int calc = frequency.calculateDoubles();
-        LOG.info( "First double: " + calc );
-        assertNotNull(calc);
+        assertEquals(14, calc);
     }
 
 }
