@@ -36,4 +36,10 @@ public class CheckSum {
         return frequencies;
     }
 
+    public static void main (String[] args) {
+        CheckSum checkSum = new CheckSum("checkSum-inputs.csv");
+        int calc = checkSum.generate();
+        System.out.println("CheckSum is: " + calc);
+    }
+
 }
