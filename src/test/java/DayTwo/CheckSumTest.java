@@ -13,4 +13,10 @@ class CheckSumTest {
         assertEquals(12, calc);
     }
 
+    @Test
+    void findCommonLetters() throws Exception {
+        CheckSum checkSum = new CheckSum("checkSum-test2.csv");
+        String calc = checkSum.findCommonLetters();
+        assertEquals("fgij", calc);
+    }
 }

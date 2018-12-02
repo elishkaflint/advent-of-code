@@ -38,6 +38,37 @@ public class CheckSum {
         return twoLetters * threeLetters;
     }
 
+    public String findCommonLetters() throws Exception {
+        List<String> codes = csvToArrayList();
+        for (String code : codes) {
+            for(int i = 0; i < codes.size(); i++) {
+                if(compare(code, codes.get(i))) { return result(code, codes.get(i)); }
+            }
+        }
+        return "This didn't work";
+    }
+
+    private Boolean compare(String current, String next) {
+        int count = 0;
+        String[] currentLetters = current.split("");
+        String[] nextLetters = next.split("");
+        for (int i = 0; i < currentLetters.length; i++) {
+            if(currentLetters[i].equals(nextLetters[i])) { count++; }
+        }
+        return count == (currentLetters.length - 1);
+    }
+
+    private String result(String current, String next) {
+        String[] currentLetters = current.split("");
+        String[] nextLetters = next.split("");
+        String result = "";
+        for (int i = 0; i < currentLetters.length; i++) {
+            if(currentLetters[i].equals(nextLetters[i])) { result += currentLetters[i]; }
+        }
+        return result;
+    }
+
+
     private List<String> csvToArrayList() throws IOException {
         List<String> codes = new ArrayList<String>();
 
@@ -58,8 +89,13 @@ public class CheckSum {
 
     public static void main(String[] args) throws Exception {
         CheckSum checkSum = new CheckSum("checkSum-inputs.csv");
-        int calc = checkSum.generate();
-        System.out.println("CheckSum is: " + calc);
+
+        int checkSumCalc = checkSum.generate();
+        System.out.println("CheckSum is: " + checkSumCalc);
+
+        String resultCalc = checkSum.findCommonLetters();
+        System.out.println("BoxNumber is: " + resultCalc);
+
     }
 
 }

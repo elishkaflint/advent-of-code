@@ -56,7 +56,7 @@ public class Frequency {
     }
 
     private List<Integer> csvToArrayList() throws IOException {
-        List<Integer> frequencies = new ArrayList<Integer>();
+        List<Integer> frequencies = new ArrayList<>();
 
         String fileIn = this.file;
         String line = null;
