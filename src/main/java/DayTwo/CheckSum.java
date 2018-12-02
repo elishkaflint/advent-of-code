@@ -1,27 +1,22 @@
 package DayTwo;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import FileConverter.FileConverter;
+
 import java.util.*;
 
 public class CheckSum {
 
-    private String file;
+    private ArrayList<String> codes;
 
-    public CheckSum(String file) {
-        this.file = file;
+    public CheckSum(String file) throws Exception {
+        this.codes = (ArrayList<String>) new FileConverter().csvToArrayList(file);
     }
 
     public int generate() throws Exception {
-
         int twoLetters = 0;
         int threeLetters = 0;
 
-        List<String> codes = csvToArrayList();
-
-        for (String code : codes) {
-
+        for (String code : this.codes) {
             String[] digits = code.split("");
             Set<String> uniqueDigits = new HashSet<>(Arrays.asList(digits));
             List<Integer> counts = new ArrayList<>();
@@ -39,10 +34,9 @@ public class CheckSum {
     }
 
     public String findCommonLetters() throws Exception {
-        List<String> codes = csvToArrayList();
-        for (String code : codes) {
-            for(int i = 0; i < codes.size(); i++) {
-                if(compare(code, codes.get(i))) { return result(code, codes.get(i)); }
+        for (String code : this.codes) {
+            for(int i = 0; i < this.codes.size(); i++) {
+                if(compare(code, this.codes.get(i))) { return result(code, this.codes.get(i)); }
             }
         }
         return "This didn't work";
@@ -68,34 +62,12 @@ public class CheckSum {
         return result;
     }
 
-
-    private List<String> csvToArrayList() throws IOException {
-        List<String> codes = new ArrayList<String>();
-
-        String fileIn = this.file;
-        String line = null;
-
-        FileReader fileReader = new FileReader(fileIn);
-        BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-        while ((line = bufferedReader.readLine()) != null) {
-            codes.add(line);
-        }
-
-        bufferedReader.close();
-
-        return codes;
-    }
-
     public static void main(String[] args) throws Exception {
         CheckSum checkSum = new CheckSum("checkSum-inputs.csv");
-
         int checkSumCalc = checkSum.generate();
         System.out.println("CheckSum is: " + checkSumCalc);
-
         String resultCalc = checkSum.findCommonLetters();
         System.out.println("BoxNumber is: " + resultCalc);
-
     }
 
 }
