@@ -3,6 +3,7 @@ package DayThree;
 import FileConverter.FileConverter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Fabric {
 
@@ -12,8 +13,12 @@ public class Fabric {
         this.claims = (ArrayList<String>) new FileConverter().csvToArrayList(file);
     }
 
-    public int calculate() throws Exception {
+    public int calculate() {
+
+        List<ArrayList<Integer>> map = new ArrayList<>();
+
         return 1;
+
     }
 
 }
