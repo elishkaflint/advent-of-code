@@ -8,7 +8,7 @@ class ReposeRecordTest {
 
     @Test
     void part1() throws Exception {
-        ReposeRecord reposeRecord = new ReposeRecord("reposeRecord-test1.csv");
+        ReposeRecord reposeRecord = new ReposeRecord("day4-test1");
         int calc = reposeRecord.part1();
         assertEquals(240, calc);
     }

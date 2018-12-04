@@ -73,7 +73,7 @@ public class Frequency {
     }
 
     public static void main (String[] args) throws Exception {
-        Frequency frequency = new Frequency("frequency-inputs.csv");
+        Frequency frequency = new Frequency("day1-input");
         System.out.println("Calculating current frequency...");
         System.out.println("Current frequency: " + frequency.calculateSum());
         System.out.println("Calculating first repeated frequency...");

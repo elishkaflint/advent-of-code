@@ -17,7 +17,7 @@ public class ReposeRecord {
     }
 
     public static void main(String[] args) throws Exception {
-        ReposeRecord reposeRecord = new ReposeRecord("reposeRecord-inputs.csv");
+        ReposeRecord reposeRecord = new ReposeRecord("day4-input");
         int calc = reposeRecord.part1();
         System.out.println(calc);
     }

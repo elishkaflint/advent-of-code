@@ -63,7 +63,7 @@ public class CheckSum {
     }
 
     public static void main(String[] args) throws Exception {
-        CheckSum checkSum = new CheckSum("checkSum-inputs.csv");
+        CheckSum checkSum = new CheckSum("day2-input");
         int checkSumCalc = checkSum.generate();
         System.out.println("CheckSum is: " + checkSumCalc);
         String resultCalc = checkSum.findCommonLetters();

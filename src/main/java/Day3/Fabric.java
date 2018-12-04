@@ -69,7 +69,7 @@ public class Fabric {
     }
 
     public static void main (String[] args) throws Exception {
-        Fabric fabric = new Fabric("claims-inputs.csv");
+        Fabric fabric = new Fabric("day3-input");
         System.out.println(fabric.part1());
         System.out.println(fabric.part2());
     }
