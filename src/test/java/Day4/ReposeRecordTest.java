@@ -1,4 +1,4 @@
-package DayFour;
+package Day4;
 
 import org.junit.jupiter.api.Test;
 

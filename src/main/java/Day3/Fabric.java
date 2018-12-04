@@ -1,4 +1,4 @@
-package DayThree;
+package Day3;
 
 import FileConverter.FileConverter;
 
