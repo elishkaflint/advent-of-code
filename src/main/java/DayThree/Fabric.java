@@ -3,7 +3,6 @@ package DayThree;
 import FileConverter.FileConverter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Fabric {
 
@@ -13,51 +12,42 @@ public class Fabric {
         this.claims = (ArrayList<String>) new FileConverter().csvToArrayList(file);
     }
 
-    public int getMaxX() {
-        int maxX = 0;
-        for (String line : this.claims) {
-            Claim claim = new Claim(line);
-            int x = claim.getX() + claim.getWidth();
-            if( x > maxX ){ maxX = x; }
-        }
-        return maxX;
-    }
-
-    public int getMaxY() {
-        int maxY = 0;
-        for (String line : this.claims) {
-            Claim claim = new Claim(line);
-            int y = claim.getY() + claim.getHeight();
-            if( y > maxY ){ maxY = y; }
-        }
-        return maxY;
-    }
-
-    public int[][] generateMatrix() {
-        return new int[getMaxX()][getMaxX()];
-    }
-
-    public void populateMatrix() {
-//        for(int i = 0; i < getMaxY(); i++) {
-//            List<Integer> columns = new ArrayList<>();
-//            for(int j = 0; j < getMaxX(); j++) {
-//                columns.add(j, 0);
-//            }
-//            rows.add(i, columns);
-//        }
-//        return rows;
-    }
-
     public int calculate() {
-        // count frequency of any number >= 2
-        return 1;
+        int[][] grid = generateGrid();
+        populateGrid(grid);
+        return count(grid);
+    }
+
+    private int[][] generateGrid() {
+        return new int[1000][1000];
+    }
+
+    private void populateGrid(int[][] grid) {
+        for (String row : this.claims) {
+            Claim claim = new Claim(row);
+            int x = claim.getX();
+            int y = claim.getY();
+            for(int i = x; i < x + claim.getWidth(); i++) {
+                for (int j = y; j < y + claim.getHeight(); j++) {
+                    grid[i][j] += 1;
+                }
+            }
+        }
+    }
+
+    private int count(int[][] matrix) {
+        int sum = 0;
+        for (int[] row : matrix) {
+            for(int square : row) {
+                if(square > 1){ sum++; }
+            }
+        }
+        return sum;
     }
 
     public static void main (String[] args) throws Exception {
         Fabric fabric = new Fabric("claims-inputs.csv");
-        System.out.println(fabric.getMaxX());
-        System.out.println(fabric.getMaxY());
-        System.out.println(fabric.generateMatrix());
+        System.out.println(fabric.calculate());
     }
 
 }
