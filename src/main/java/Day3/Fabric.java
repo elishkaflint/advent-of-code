@@ -3,6 +3,7 @@ package Day3;
 import FileConverter.FileConverter;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Fabric {
 
@@ -72,6 +73,13 @@ public class Fabric {
         Fabric fabric = new Fabric("day3-input");
         System.out.println(fabric.part1());
         System.out.println(fabric.part2());
+
+//        Fabric fabricVis = new Fabric("day3-input");
+//        int[][] grid = fabricVis.generateGrid();
+//        fabricVis.populate(grid);
+//        for (int[] row : grid) {
+//            System.out.println(Arrays.toString(row));
+//        }
     }
 
 }
