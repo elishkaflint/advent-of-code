@@ -16,4 +16,9 @@ public class ReposeRecord {
         return 1;
     }
 
+    public static void main(String[] args) {
+        ReposeRecord reposeRecord = new ReposeRecord(file);
+        int calc = reposeRecord.part1();
+    }
+
 }
