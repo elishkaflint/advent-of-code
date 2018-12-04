@@ -12,17 +12,23 @@ public class Fabric {
         this.claims = (ArrayList<String>) new FileConverter().csvToArrayList(file);
     }
 
-    public int calculate() {
+    public int part1() {
         int[][] grid = generateGrid();
-        populateGrid(grid);
-        return count(grid);
+        populate(grid);
+        return countOverlaps(grid, 1);
+    }
+
+    public String part2() {
+        int[][] grid = generateGrid();
+        populate(grid);
+        return findPatch(grid);
     }
 
     private int[][] generateGrid() {
         return new int[1000][1000];
     }
 
-    private void populateGrid(int[][] grid) {
+    private void populate(int[][] grid) {
         for (String row : this.claims) {
             Claim claim = new Claim(row);
             int x = claim.getX();
@@ -35,19 +41,37 @@ public class Fabric {
         }
     }
 
-    private int count(int[][] matrix) {
+    private int countOverlaps(int[][] matrix, int value) {
         int sum = 0;
         for (int[] row : matrix) {
             for(int square : row) {
-                if(square > 1){ sum++; }
+                if(square > value){ sum++; }
             }
         }
         return sum;
     }
 
+    private String findPatch(int[][] grid) {
+        for (String row : this.claims) {
+            Claim claim = new Claim(row);
+            int x = claim.getX();
+            int y = claim.getY();
+            int sum = 0;
+            for(int i = x; i < x + claim.getWidth(); i++) {
+                for (int j = y; j < y + claim.getHeight(); j++) {
+                    if(grid[i][j] == 1) { sum++; }
+                }
+            }
+            int area = claim.getWidth() * claim.getHeight();
+            if (sum == area) { return row; };
+        }
+        return "Try again";
+    }
+
     public static void main (String[] args) throws Exception {
         Fabric fabric = new Fabric("claims-inputs.csv");
-        System.out.println(fabric.calculate());
+        System.out.println(fabric.part1());
+        System.out.println(fabric.part2());
     }
 
 }
