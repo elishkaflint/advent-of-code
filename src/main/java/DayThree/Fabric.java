@@ -33,28 +33,23 @@ public class Fabric {
         return maxY;
     }
 
-    public List<List<Integer>> generateMatrix() {
-        List<List<Integer>> rows = new ArrayList<>();
-        for(int i = 0; i < getMaxY(); i++) {
-            List<Integer> columns = new ArrayList<>();
-            for(int j = 0; j < getMaxX(); j++) {
-                columns.add(j, 0);
-            }
-            rows.add(i, columns);
-        }
-        return rows;
+    public int[][] generateMatrix() {
+        return new int[getMaxX()][getMaxX()];
     }
 
     public void populateMatrix() {
-
+//        for(int i = 0; i < getMaxY(); i++) {
+//            List<Integer> columns = new ArrayList<>();
+//            for(int j = 0; j < getMaxX(); j++) {
+//                columns.add(j, 0);
+//            }
+//            rows.add(i, columns);
+//        }
+//        return rows;
     }
 
     public int calculate() {
         // count frequency of any number >= 2
-
-
-
-        List<ArrayList<Integer>> map = new ArrayList<>();
         return 1;
     }
 
