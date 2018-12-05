@@ -70,16 +70,16 @@ public class Fabric {
     }
 
     public static void main (String[] args) throws Exception {
-        Fabric fabric = new Fabric("day3-input");
-        System.out.println(fabric.part1());
-        System.out.println(fabric.part2());
+//        Fabric fabric = new Fabric("day3-input");
+//        System.out.println(fabric.part1());
+//        System.out.println(fabric.part2());
 
-//        Fabric fabricVis = new Fabric("day3-input");
-//        int[][] grid = fabricVis.generateGrid();
-//        fabricVis.populate(grid);
-//        for (int[] row : grid) {
-//            System.out.println(Arrays.toString(row));
-//        }
+        Fabric fabricVis = new Fabric("day3-input");
+        int[][] grid = fabricVis.generateGrid();
+        fabricVis.populate(grid);
+        for (int[] row : grid) {
+            System.out.println(Arrays.toString(row));
+        }
     }
 
 }
