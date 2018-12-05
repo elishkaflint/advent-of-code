@@ -12,6 +12,13 @@ public class ReposeRecord {
         this.records = (ArrayList<String>) new FileConverter().csvToArrayList(file);
     }
 
+    public int part1() {
+        sortChronologically();
+        int maxSleeper = getMaxSleeper(getSleeperTimes());
+        int maxTime = getMaxTime(maxSleeper);
+        return maxSleeper * maxTime;
+    }
+
     public void sortChronologically() {
         Collections.sort(this.records);
     }
@@ -39,6 +46,10 @@ public class ReposeRecord {
         return sleeperTimes;
     }
 
+    public int getMaxTime(int guard) {
+       return 1;
+    }
+
     public int getMaxSleeper(Map<Integer, Integer> sleeperTimes) {
         Map.Entry<Integer, Integer> maxSleeper = null;
         for (Map.Entry<Integer, Integer> sleeper : sleeperTimes.entrySet()) {
@@ -50,23 +61,16 @@ public class ReposeRecord {
         return maxSleeper.getValue();
     }
 
-    public int part1() {
-        return 1;
-    }
-
     public static void main(String[] args) throws Exception {
         ReposeRecord reposeRecord = new ReposeRecord("day4-input");
-        reposeRecord.sortChronologically();
+        int calc = reposeRecord.part1();
+        System.out.println(calc);
 
-        for( String record : reposeRecord.records ) {
-            System.out.println(record);
-        }
-
-        reposeRecord.getSleeperTimes();
-//
-
-//        int calc = reposeRecord.part1();
-//        System.out.println(calc);
+//        reposeRecord.sortChronologically();
+//        for( String record : reposeRecord.records ) {
+//            System.out.println(record);
+//        }
+//        reposeRecord.getSleeperTimes();
     }
 
 }
