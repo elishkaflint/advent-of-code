@@ -15,4 +15,5 @@ class SumOfItsPartsTest {
     @Test
     void part2() {
     }
+
 }
